@@ -22,7 +22,7 @@ public class Dealer {
 		List<Card> playerHand = new ArrayList<>();
 		List<Card> dealerHand = new ArrayList<>();
 		//deal player two cards face up, show value, show total
-		play.playerHand(input, playerHand);
+//		play.playerHand(input, playerHand);
 		//deal to dealer two cards, one is hidden, show total of only one card
 		play.dealerHand(input, dealerHand);
 		

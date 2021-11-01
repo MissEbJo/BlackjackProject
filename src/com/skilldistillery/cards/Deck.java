@@ -32,11 +32,9 @@ public class Deck {
 	}
 	
 	public int cardsLeftInDeck() {
-		int numCards = 5;
-//		
-		Deck deck = new Deck();
 		
-		return deck.checkDeckSize() - numCards;
+		
+		return deck.size();
 		
 		
 	}

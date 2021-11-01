@@ -33,12 +33,12 @@ public class Player {
 		}
 		for (int i = 0; i < playerHand.size(); i++) {
 			Object[] hands = playerHand.toArray();
-			System.out.println(hands[i]);
+			System.out.print(hands[i] + "\t");
 		}
-		System.out.println(totalValue);
+		System.out.println(" Hand Total: " + totalValue );
 
-//		while(playing) {
-		System.out.println("Do you want to hit(1) or stay(2)?");
+		while(totalValue < 21) {
+		System.out.println("Do you want to (1)Hit or (2)Stand?");
 		int choice = input.nextInt();
 		if(choice == 1) {
 			Card c = deck.dealCard();
@@ -48,17 +48,7 @@ public class Player {
 			System.out.println(totalValue);
 			
 		}
-			System.out.println("Do you want to hit(1) or stay(2)?");
-			 choice = input.nextInt();
-			if(choice == 1) {
-				Card c = deck.dealCard();
-				totalValue += c.getValue();
-				playerHand.add(c);
-				System.out.println(playerHand);
-				System.out.println(totalValue);
-			
 		}
-
 		}
 		
 
@@ -73,6 +63,7 @@ public class Player {
 			totalValue += c.getValue();
 			deck.shuffle();
 			dealerHand.add(c);
+			System.out.println("Dealer Hand: " + dealerHand.get(0).toString() + " and [Hidden]");
 
 		}
 	}

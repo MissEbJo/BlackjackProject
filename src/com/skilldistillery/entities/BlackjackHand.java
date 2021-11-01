@@ -13,27 +13,10 @@ public class BlackjackHand extends Hand {
 	public BlackjackHand() {
 	}
 
-//	public void getPlayerCardsAndValue(Scanner sc, Deck deck) {
-//
-//		int numCards = sc.nextInt();
-//		if (numCards > 52) {
-//			throw new InputMismatchException();
-//		}
-//
-//		List<Card> hand = new ArrayList<>(numCards);
-//		int totalValue = 0;
-//		for (int i = 0; i < numCards; i++) {
-//			Card c = deck.dealCard();
-//			totalValue += c.getValue();
-//			deck.shuffle();
-//			hand.add(c);
-//		}
-////	      getHandValue(hand, totalValue);
-//
-////		return 0;
-//	}
 
 	public boolean isBlackJack() {
+		
+		
 		return false;
 
 	}
@@ -42,22 +25,37 @@ public class BlackjackHand extends Hand {
 		return false;
 	}
 
-//	public int getHandValue(int totalValue) {
-//		Deck deck = new Deck();
-////		Card[] hand = deck.Deck();
-////		for (Card card : hand) {
-//
-////		}
-//		return totalValue;
-//	}
-
+public void winningConditions(List<Card> hand) {
+	
+}
 	@Override
-	public int getHandValue() {
-//		int handVal = 0; 
-//		for (int i = 0; i< cards.size(); i++) {
-//			handVal += cards.get(i).getValue();
-//		}
-		return 0;
+	public int getHandValue() { //return total value of cards in hands
+		int totalVal = 0;
+//		int aces = 0;
+		
+		for (Card card2 : card) {
+			switch(card2.getValue()) {
+//			case TWO: totalVal +=2; break;
+//			case THREE: totalVal +=3; break;
+//			case FOUR: totalVal +=4; break;
+//			case FIVE: totalVal +=5; break;
+//			case SIX: totalVal +=6; break;
+//			case SEVEN: totalVal +=7; break;
+//			case EIGHT: totalVal +=8; break;
+//			case NINE: totalVal +=9; break;
+//			case TEN: totalVal +=10; break;
+//			case JACK: totalVal +=10; break;
+//			case QUEEN: totalVal +=10; break;
+//			case KING: totalVal +=10; break;
+//			case ACE: totalVal +=11; break;
+			
+			
+			
+			}
+			
+		}
+		
+		return totalVal;
 	}
 
 }
