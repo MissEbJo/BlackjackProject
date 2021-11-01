@@ -15,7 +15,6 @@ public class Dealing {
   
   private void run() {
     Deck deck = new Deck();
-    
     Scanner sc = new Scanner(System.in);
     System.out.print("How many cards: ");
     
@@ -26,14 +25,15 @@ public class Dealing {
       }
       
       List<Card> hand = new ArrayList<>(numCards);
-      int totalValue = 0;
+//      int totalValue = 0;
       for(int i = 0; i < numCards; i++) {
         Card c = deck.dealCard();
-        totalValue += c.getValue();
-        deck.shuffle();
-        hand.add(c);
+//        System.out.println(c);
+//        totalValue += c.getValue();
+//        deck.shuffle();
+//        hand.add(c);
       }
-      printHandAndValue(hand, totalValue);
+//      printHandAndValue(hand, totalValue);
     }
     catch (InputMismatchException e) {
       System.out.println("That is not a valid number of cards.");
@@ -43,12 +43,12 @@ public class Dealing {
     }
   }
   
-  private void printHandAndValue(List<Card> hand, int value) {
-    for (Card card : hand) {
-      System.out.println(card);
-    }
-    System.out.println("Total value: " + value);
-  }
+//  private void printHandAndValue(List<Card> hand, int value) {
+//    for (Card card : hand) {
+//      System.out.println(card);
+//    }
+//    System.out.println("Total value: " + value);
+//  }
 
 }
 
