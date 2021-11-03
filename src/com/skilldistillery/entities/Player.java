@@ -1,7 +1,5 @@
 package com.skilldistillery.entities;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,55 +14,52 @@ public class Player {
 	public Player() {
 	}
 
-	public void playerHand(Scanner input, List<Card> playerHand) {
-		Deck deck = new Deck();
-		int numCards = 2;
+	public void playerTurns(Scanner input, List<Card> playerHand, int totalValue, Deck editableDeck) {
+		Dealer dealer = new Dealer();
+		totalValue = dealer.calculateHandTotals(playerHand);
 		boolean playing = true;
-
-		System.out.println("The player's hand has been dealt.");
-		playerHand = new ArrayList<>();
-		int totalValue = 0;
-		for (int i = 0; i < numCards; i++) {
-			Card c = deck.dealCard();
-			totalValue += c.getValue();
-			deck.shuffle();
-			playerHand.add(c);
-
-		}
-		for (int i = 0; i < playerHand.size(); i++) {
-			Object[] hands = playerHand.toArray();
-			System.out.print(hands[i] + "\t");
-		}
-		System.out.println(" Hand Total: " + totalValue );
-
-		while(totalValue < 21) {
-		System.out.println("Do you want to (1)Hit or (2)Stand?");
-		int choice = input.nextInt();
-		if(choice == 1) {
-			Card c = deck.dealCard();
-			totalValue += c.getValue();
-			playerHand.add(c);
-			System.out.println(playerHand);
-			System.out.println(totalValue);
-			
-		}
-		}
-		}
-		
-
-	public void dealerHand(Scanner input, List<Card> dealerHand) {
-		Deck deck = new Deck();
-		int numCards = 2;
-
-		dealerHand = new ArrayList<>(numCards);
-		int totalValue = 0;
-		for (int i = 0; i < numCards; i++) {
-			Card c = deck.dealCard();
-			totalValue += c.getValue();
-			deck.shuffle();
-			dealerHand.add(c);
-			System.out.println("Dealer Hand: " + dealerHand.get(0).toString() + " and [Hidden]");
-
+		while (playing) {
+			System.out.println("Do you want to (1)Hit or (2)Stand: ");
+			int choice = input.nextInt();
+			if (choice == 1) {
+				Card c = editableDeck.dealCard();
+				totalValue += c.getValue();
+				playerHand.add(c);
+				System.out.println(playerHand + " " + totalValue);
+				if (totalValue > 21) {
+					System.out.println("Player has busted! You lost & Dealer wins!");
+					playing = false;
+				}
+			} else if (choice == 2) {
+				System.out.println("Player has stood. Dealer's turn.");
+				playing = false;
+			}
 		}
 	}
+
+	public void dealerTurns(Scanner input, List<Card> dealerHand, int totalValue, Deck editableDeck) {
+		Dealer dealer = new Dealer();
+		totalValue = dealer.calculateHandTotals(dealerHand);
+		boolean dealerplaying = true;
+		while (dealerplaying) {
+			if (totalValue == 21) {
+				System.out.println("BLACKJACK! Dealer wins!");
+				dealerplaying = false;
+			}
+			if (totalValue < 17) {
+				System.out.println("The dealer has hit.");
+				Card c = editableDeck.dealCard();
+				totalValue += c.getValue();
+				dealerHand.add(c);
+				System.out.println(dealerHand + " " + totalValue);
+			} else if (totalValue >= 17 && totalValue <= 21) {
+				System.out.println("The dealer has stood.");
+				dealerplaying = false;
+			} else {
+				System.out.println("Dealer has busted. Dealer loses. Player Wins!");
+				dealerplaying = false;
+			}
+		}
+	}
+
 }

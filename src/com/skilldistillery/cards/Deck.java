@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.skilldistillery.entities.Hand;
-
 public class Deck {
 
 	private List<Card> deck;
+
 	public static void main(String[] args) {
 		Deck deck = new Deck();
 //		deck.createDeck();
 //		deck.cardsLeftInDeck() ;
-		System.out.println(deck.checkDeckSize() -5);
+		System.out.println(deck.checkDeckSize() - 5);
 	}
 
 	public Deck() {
@@ -30,32 +29,25 @@ public class Deck {
 
 		return deck;
 	}
-	
-	public int cardsLeftInDeck() {
-		
-		
-		return deck.size();
-		
-		
-	}
 
+	public int cardsLeftInDeck() {
+
+		return deck.size();
+
+	}
 
 	public Card dealCard() {
 		return deck.remove(0);
 
 	}
-	public void dealCard(Hand hand) {
-		
-		
-	}
 
 	public void shuffle() {
 		Collections.shuffle(deck);
-		
 
 	}
+
 	private int checkDeckSize() {
 		return deck.size();
-		
+
 	}
 }
