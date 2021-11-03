@@ -9,12 +9,12 @@ import com.skilldistillery.cards.Card;
 import com.skilldistillery.cards.Deck;
 
 public class Dealer {
-	public Scanner input = new Scanner(System.in);
+//	public Scanner input = new Scanner(System.in);
 
 	public Dealer() {
 	}
 
-	public void playGame() {
+	public void playGame(Scanner input) {
 		Deck deck = new Deck();
 		Player play = new Player();
 		Dealer dealerMain = new Dealer();
@@ -23,33 +23,38 @@ public class Dealer {
 		System.out.println("Welcome to BlackJack! Ready to play?");
 		// shuffle
 		deck.shuffle();
-		while(playForever) {
-		// create hands & hand totals for each player & dealer
-		List<Card> playerHand = new ArrayList<>();
-		int playerHandTotal = 0;
-		List<Card> dealerHand = new ArrayList<>();
-		int dealerHandTotal = 0;
-		// deal player two cards face up, show value, show total
-		dealPlayerHand(input, playerHand, playerHandTotal, deck);
-		// deal to dealer two cards, one is hidden, show total of only one card
-		dealDealerHand(input, dealerHand, dealerHandTotal, deck);
-		
-		
-		int whoa = blackjack.isBlackJack(dealerHand, playerHand, playerHandTotal, dealerHandTotal, dealerMain);
-		if(whoa == 1) {
-			playForever =false;
-		}
-		//add what's on isBlackJack to player & dealer  turns & finish whoa2 logic
-		play.playerTurns(input, playerHand, playerHandTotal, deck);
-		
-		
-		play.dealerTurns(input, playerHand, playerHandTotal, deck);
-		
-		
-		int whoa2 = blackjack.winningConditions(dealerHand, playerHand, playerHandTotal, dealerHandTotal, dealerMain);
-		if(whoa == 1) {
-			
-		} playForever =false;
+		while (playForever) {
+			// create hands & hand totals for each player & dealer
+			List<Card> playerHand = new ArrayList<>();
+			int playerHandTotal = 0;
+			List<Card> dealerHand = new ArrayList<>();
+			int dealerHandTotal = 0;
+			// deal player two cards face up, show value, show total
+			dealPlayerHand(input, playerHand, playerHandTotal, deck);
+			// deal to dealer two cards, one is hidden, show total of only one card
+			dealDealerHand(input, dealerHand, dealerHandTotal, deck);
+
+			int whoa = blackjack.isBlackJack(dealerHand, playerHand, playerHandTotal, dealerHandTotal, dealerMain);
+			if (whoa == 1) {
+				playForever = false;
+			}
+			// add what's on isBlackJack to player & dealer turns & finish whoa2 logic
+			int whoa3 = play.playerTurns(input, playerHand, playerHandTotal, deck);
+			if (whoa3 == 1) {
+				playForever = false;
+			}
+
+			int whoa4 = play.dealerTurns(input, playerHand, playerHandTotal, deck);
+
+			if (whoa4 == 1) {
+				playForever = false;
+			}
+			int whoa2 = blackjack.winningConditions(dealerHand, playerHand, playerHandTotal, dealerHandTotal,
+					dealerMain);
+			if (whoa2 == 1) {
+				playForever = false;
+			}
+			playForever = false;
 		}
 	}
 

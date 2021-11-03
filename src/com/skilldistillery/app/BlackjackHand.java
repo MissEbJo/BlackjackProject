@@ -16,29 +16,28 @@ public class BlackjackHand {
 		int playerHandTotals = dealer.calculateHandTotals(playerHand);
 		int dealerHandTotals = dealer.calculateHandTotals(dealerHand);
 
-		int keepAtIt =0;
+		int keepAtIt = 0;
 		// if player hand total is 21
 
 		if (playerHandTotals == 21) {
 			if (dealerHandTotals < 21) {
 				System.out.println("BLACKJACK! Player Wins!");
-				keepAtIt =1;
+				keepAtIt = 1;
 			} else if (playerHandTotals == dealerHandTotals) {
 				System.out.println("Sorry, folks. No winners today. It's a DRAW!");
-				keepAtIt =2;
+				keepAtIt = 2;
 			}
 		}
 		return keepAtIt;
 	}
 
-	
-	public int winningConditions(List<Card> dealerHand, List<Card> playerHand, int playerHandTotal,
-			int dealerHandTotal, Dealer dealer) {
+	public int winningConditions(List<Card> dealerHand, List<Card> playerHand, int playerHandTotal, int dealerHandTotal,
+			Dealer dealer) {
 		int playerHandTotals = dealer.calculateHandTotals(playerHand);
 		int dealerHandTotals = dealer.calculateHandTotals(dealerHand);
 		// if the player hand total is greater than the dealer hand
 
-		int keepAtIt =0;
+		int keepAtIt = 0;
 		if (playerHandTotals > dealerHandTotals) {
 			System.out.println("Player Wins by default. Hey dealer, try your luck another day!");
 			keepAtIt = 1;
@@ -50,7 +49,7 @@ public class BlackjackHand {
 		}
 
 		// if the hand totals of player and dealer are same, its a DRAW (push)
-		else  {
+		else {
 			System.out.println("Awww, there's not winners here today. It's a DRAW, folks!");
 		}
 		return keepAtIt;

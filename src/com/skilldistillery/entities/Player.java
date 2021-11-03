@@ -14,10 +14,11 @@ public class Player {
 	public Player() {
 	}
 
-	public void playerTurns(Scanner input, List<Card> playerHand, int totalValue, Deck editableDeck) {
+	public int playerTurns(Scanner input, List<Card> playerHand, int totalValue, Deck editableDeck) {
 		Dealer dealer = new Dealer();
 		totalValue = dealer.calculateHandTotals(playerHand);
 		boolean playing = true;
+		int keepAtIt = 0;
 		while (playing) {
 			System.out.println("Do you want to (1)Hit or (2)Stand: ");
 			int choice = input.nextInt();
@@ -26,8 +27,10 @@ public class Player {
 				totalValue += c.getValue();
 				playerHand.add(c);
 				System.out.println(playerHand + " " + totalValue);
+
 				if (totalValue > 21) {
 					System.out.println("Player has busted! You lost & Dealer wins!");
+					keepAtIt = 1;
 					playing = false;
 				}
 			} else if (choice == 2) {
@@ -35,12 +38,14 @@ public class Player {
 				playing = false;
 			}
 		}
+		return keepAtIt;
 	}
 
-	public void dealerTurns(Scanner input, List<Card> dealerHand, int totalValue, Deck editableDeck) {
+	public int dealerTurns(Scanner input, List<Card> dealerHand, int totalValue, Deck editableDeck) {
 		Dealer dealer = new Dealer();
 		totalValue = dealer.calculateHandTotals(dealerHand);
 		boolean dealerplaying = true;
+		int keepAtIt = 0;
 		while (dealerplaying) {
 			if (totalValue == 21) {
 				System.out.println("BLACKJACK! Dealer wins!");
@@ -58,8 +63,10 @@ public class Player {
 			} else {
 				System.out.println("Dealer has busted. Dealer loses. Player Wins!");
 				dealerplaying = false;
+				keepAtIt = 1;
 			}
 		}
+		return keepAtIt;
 	}
 
 }
