@@ -37,23 +37,31 @@ public class Dealer {
 			int whoa = blackjack.isBlackJack(dealerHand, playerHand, playerHandTotal, dealerHandTotal, dealerMain);
 			if (whoa == 1) {
 				playForever = false;
+				break;
 			}
 			// add what's on isBlackJack to player & dealer turns & finish whoa2 logic
 			int whoa3 = play.playerTurns(input, playerHand, playerHandTotal, deck);
 			if (whoa3 == 1) {
 				playForever = false;
+				break;
 			}
 
-			int whoa4 = play.dealerTurns(input, playerHand, playerHandTotal, deck);
+			int whoa4 = play.dealerTurns(input, dealerHand, playerHandTotal, deck);
 
 			if (whoa4 == 1) {
 				playForever = false;
+				break;
 			}
-			int whoa2 = blackjack.winningConditions(dealerHand, playerHand, playerHandTotal, dealerHandTotal,
-					dealerMain);
-			if (whoa2 == 1) {
-				playForever = false;
+			if (whoa4 == 2) {
+				 blackjack.winningConditions(dealerHand, playerHand, playerHandTotal, dealerHandTotal,
+						dealerMain);
+//				playForever = false;
+//				break;
 			}
+//			if (whoa2 == 1) {
+//				playForever = false;
+//				break;
+//			}
 			playForever = false;
 		}
 	}

@@ -31,7 +31,7 @@ public class BlackjackHand {
 		return keepAtIt;
 	}
 
-	public int winningConditions(List<Card> dealerHand, List<Card> playerHand, int playerHandTotal, int dealerHandTotal,
+	public void winningConditions(List<Card> dealerHand, List<Card> playerHand, int playerHandTotal, int dealerHandTotal,
 			Dealer dealer) {
 		int playerHandTotals = dealer.calculateHandTotals(playerHand);
 		int dealerHandTotals = dealer.calculateHandTotals(dealerHand);
@@ -52,7 +52,7 @@ public class BlackjackHand {
 		else {
 			System.out.println("Awww, there's not winners here today. It's a DRAW, folks!");
 		}
-		return keepAtIt;
+//		return keepAtIt;
 
 	}
 
